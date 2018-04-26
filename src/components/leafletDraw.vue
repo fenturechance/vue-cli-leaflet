@@ -3,6 +3,7 @@
 </template>
 <script>
     import 'leaflet-draw';
+    import 'leaflet-draw/dist/leaflet.draw.css';
     export default {
         props: ['options','mapObj'],
         mounted() {
