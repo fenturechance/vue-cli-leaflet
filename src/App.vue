@@ -1,22 +1,24 @@
 <template>
   <div id="app">
-    <LMap :zoom="zoom" :center="center">
+    <LMap :zoom="zoom" :center="center" ref="mapObj">
       <LTileLayer :url="url" :attribution="attribution"></LTileLayer>
       <LMarker :lat-lng="marker"></LMarker>
-      <v-protobuf :url="url" :options="options"></v-protobuf>
+      <LFeatureGroup ref="drawLayer">
+        <leafletDraw :options="drawOption" :map-obj="mapObj"></leafletDraw>
+      </LFeatureGroup>
     </LMap>
   </div>
 </template>
 
 <script>
-import  { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import  { LMap, LTileLayer, LMarker , LFeatureGroup } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
-import Vue2LeafletVectorGridProtobuf from 'vue2-leaflet-vectorgrid';
+import leafletDraw from './components/leafletDraw';
 
 export default {
   components: {
     LMap, LTileLayer, LMarker,
-    'v-protobuf': Vue2LeafletVectorGridProtobuf
+    LFeatureGroup,leafletDraw
   },
   data () {
     return {
@@ -25,13 +27,47 @@ export default {
       url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:'',
       marker: L.latLng(47.413220, -1.219482),
-      options: {
-        vectorTileLayerStyles:{
+      drawOption: {
+        position: 'topright',
+        draw: {
+            polyline: {
+                shapeOptions: {
+                    color: '#f357a1',
+                    weight: 10
+                }
+            },
+            polygon: {
+                allowIntersection: false, // Restricts shapes to simple polygons
+                drawError: {
+                    color: '#e1e100', // Color the shape will turn when intersects
+                    message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+                },
+                shapeOptions: {
+                    color: '#bada55'
+                }
+            },
+            circle: false, // Turns off this drawing tool
+            rectangle: {
+                shapeOptions: {
+                    clickable: false
+                }
+            },
         },
-      }
+        edit: {
+            remove: false,
+            featureGroup : {}
+        }
+      },
+      mapObj: {}
     }
   },
+  created() {
+  },
   mounted() {
+      this.mapObj = this.$refs.mapObj.mapObject;
+      this.$nextTick(()=>{
+        this.drawOption.edit.featureGroup = this.$refs.drawLayer.mapObject;
+      })
   }
 }
 </script>

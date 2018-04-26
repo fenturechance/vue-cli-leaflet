@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "element-ui": "^2.3.6",
+    "leaflet-draw": "^1.0.2",
     "vue": "^2.5.11",
     "vue2-leaflet": "^1.0.2",
     "vue2-leaflet-vectorgrid": "^1.0.4"
