@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import  { LMap, LTileLayer, LMarker , LFeatureGroup } from 'vue2-leaflet';
+import  { LMap, LTileLayer, LMarker , LFeatureGroup , LPopup } from 'vue2-leaflet';
 import 'leaflet/dist/leaflet.css';
 import leafletDraw from './components/leafletDraw';
 

@@ -12,6 +12,8 @@
   "dependencies": {
     "element-ui": "^2.3.6",
     "leaflet-draw": "^1.0.2",
+    "leaflet-draw-toolbar": "^0.3.0-alpha.1",
+    "leaflet-toolbar": "^0.4.0-alpha.1",
     "u-loader": "^1.0.0",
     "vue": "^2.5.11",
     "vue2-leaflet": "^1.0.2",
