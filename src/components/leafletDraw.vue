@@ -11,6 +11,6 @@
                 var drawControl = new L.Control.Draw(this.options);
                 this.mapObj.addControl(drawControl);
             })
-        }
+        },
     }
 </script>

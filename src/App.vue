@@ -52,6 +52,9 @@ export default {
                     clickable: false
                 }
             },
+            marker: {
+                icon: {}
+            }
         },
         edit: {
             remove: false,
