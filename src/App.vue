@@ -48,9 +48,8 @@ export default {
         },
         edit: {
             featureGroup : {},
-            edit: {
-                moveMarkers: false // centroids, default: false
-            }
+            edit: false ,
+            remove : false
         }
       },
       mapObj: {}
