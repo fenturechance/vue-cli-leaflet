@@ -4,6 +4,7 @@
 <script>
     import 'leaflet-draw';
     import 'leaflet-toolbar';
+    import 'leaflet-draw-drag';
 
     import 'leaflet-toolbar/dist/leaflet.toolbar.css';
     import 'leaflet-draw/dist/leaflet.draw.css';
@@ -16,7 +17,10 @@
                 this.mapObj.addLayer(drawnItems);
                 var drawControl = new L.Control.Draw({
                     edit: {
-                        featureGroup: drawnItems
+                        featureGroup: drawnItems,
+                        edit: {
+                            moveMarkers: false // centroids, default: false
+                        }
                     }
                 });
                 this.mapObj.addControl(drawControl);
