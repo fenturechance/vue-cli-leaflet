@@ -15,19 +15,11 @@
             this.$nextTick(()=>{
                 var drawnItems = this.options.edit.featureGroup;
                 this.mapObj.addLayer(drawnItems);
-                var drawControl = new L.Control.Draw({
-                    edit: {
-                        featureGroup: drawnItems,
-                        edit: {
-                            moveMarkers: false // centroids, default: false
-                        }
-                    }
-                });
+                var drawControl = new L.Control.Draw(this.options);
                 this.mapObj.addControl(drawControl);
                 this.mapObj.on(L.Draw.Event.CREATED, (evt)=> {
                     var	type = evt.layerType,
                         layer = evt.layer;
-
                     drawnItems.addLayer(layer);
                 });
             })

@@ -30,12 +30,7 @@ export default {
       drawOption: {
         position: 'topright',
         draw: {
-            polyline: {
-                shapeOptions: {
-                    color: '#f357a1',
-                    weight: 10
-                }
-            },
+            polyline:false,
             polygon: {
                 allowIntersection: false, // Restricts shapes to simple polygons
                 drawError: {
@@ -47,18 +42,15 @@ export default {
                 }
             },
             circle: false, // Turns off this drawing tool
-            rectangle: {
-                shapeOptions: {
-                    clickable: false
-                }
-            },
-            marker: {
-                icon: {}
-            }
+            rectangle: false,
+            marker: false,
+            circlemarker : false
         },
         edit: {
-            remove: false,
-            featureGroup : {}
+            featureGroup : {},
+            edit: {
+                moveMarkers: false // centroids, default: false
+            }
         }
       },
       mapObj: {}
